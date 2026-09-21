@@ -13,20 +13,13 @@ export function useWishlist() {
   return useQuery(wishlistOptions);
 }
 
-/**
- * Per-movie flag. `select` means a card only re-renders when ITS answer changes, not whenever any
- * wishlist entry changes - matters when hundreds of cards are on screen.
- */
 export function useIsWishlisted(movieId) {
   const select = useCallback((data) => data.items.some((item) => item.id === movieId), [movieId]);
   const { data } = useQuery({ ...wishlistOptions, select });
   return data === true;
 }
 
-/**
- * Add / remove with an optimistic update: the heart flips instantly, and is rolled back with a message
- * if the server rejects it. Mutations are serialised (`scope`) so rapid toggling can't reorder on the server.
- */
+
 export function useToggleWishlist() {
   const queryClient = useQueryClient();
   const toast = useToast();

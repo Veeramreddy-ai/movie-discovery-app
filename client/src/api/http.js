@@ -22,12 +22,7 @@ function buildUrl(path, params) {
   return `${BASE_URL}/api${path}${qs ? `?${qs}` : ''}`;
 }
 
-/**
- * The single place the client talks to the network. It
- *  - accepts an AbortSignal (React Query aborts requests that are no longer needed)
- *  - converts every failure into an ApiError with a user-presentable message
- *  - attaches the anonymous client id only when asked (avoids CORS preflights on plain reads)
- */
+
 export async function request(path, { method = 'GET', params, body, signal, withClientId = false } = {}) {
   const headers = { Accept: 'application/json' };
   if (withClientId) headers['X-Client-Id'] = getClientId();
@@ -55,7 +50,7 @@ export async function request(path, { method = 'GET', params, body, signal, with
   try {
     payload = await res.json();
   } catch {
-    /* non-JSON body */
+   
   }
 
   if (!res.ok) {

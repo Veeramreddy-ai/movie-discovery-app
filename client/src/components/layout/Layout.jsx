@@ -9,13 +9,12 @@ export function Layout() {
   const navigationType = useNavigationType();
   const online = useOnlineStatus();
 
-  // We restore scroll positions ourselves (see useScrollRestoration); the browser's automatic
-  // restoration fires before async content exists and lands in the wrong place.
+  
   useEffect(() => {
     if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
   }, []);
 
-  // New page (link click) starts at the top. Back/forward (POP) is handled by each page's restoration hook.
+
   useLayoutEffect(() => {
     if (navigationType !== 'POP') window.scrollTo(0, 0);
   }, [pathname, navigationType]);

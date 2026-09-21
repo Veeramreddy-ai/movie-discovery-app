@@ -9,10 +9,6 @@ import { createErrorHandler, notFoundHandler } from './middleware/errorHandler.j
 import { createMoviesRouter } from './routes/movies.js';
 import { createWishlistRouter } from './routes/wishlist.js';
 
-/**
- * Builds the Express app from injected dependencies (no globals), which is what makes it easy to test
- * with a fake TMDB client and an in-memory database.
- */
 export function createApp({
   movieService,
   wishlistRepository,

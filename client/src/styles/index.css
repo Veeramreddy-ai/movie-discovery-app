@@ -1,8 +1,4 @@
-/* ==========================================================================
-   Marquee - design tokens
-   Palette is a projection-room green with ivory type and one marquee-amber accent.
-   Posters are the only saturated thing on screen, so the interface stays quiet around them.
-   ========================================================================== */
+
 :root {
   --pine-900: #0a1a17;
   --pine-800: #0f231f;

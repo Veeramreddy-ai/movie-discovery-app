@@ -5,10 +5,6 @@ const THIS_YEAR = new Date().getFullYear();
 const YEARS = Array.from({ length: THIS_YEAR - 1919 }, (_, i) => THIS_YEAR - i);
 const RATINGS = [5, 6, 7, 8, 9];
 
-/**
- * Sort / year / rating controls. While a text search is active TMDB returns results by relevance and cannot
- * sort them, so the sort control says so instead of offering choices that would silently do nothing.
- */
 export function Toolbar({ filters, onChange, onClear, canClear }) {
   const searching = filters.query.length > 0;
 

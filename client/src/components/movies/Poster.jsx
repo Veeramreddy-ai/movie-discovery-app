@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { FilmIcon } from '../ui/Icons.jsx';
 
-/**
- * Every poster lives in a fixed 2:3 box (CSS aspect-ratio), so posters of any real size, slow images and
- * missing images all occupy the same space and the grid never jumps while images load.
- */
+
 export function Poster({ poster, title, sizes, alt, priority = false }) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);

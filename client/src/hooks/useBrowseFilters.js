@@ -26,13 +26,7 @@ function parseIntInRange(raw, min, max) {
   return Number.isInteger(n) && n >= min && n <= max ? n : undefined;
 }
 
-/**
- * The URL is the single source of truth for what the user is looking at:
- *   /?q=matrix&genres=28,878&sort=vote_average.desc&year=1999&minRating=7
- *
- * That gives us, for free: shareable links, working back/forward buttons, and a browse state that
- * survives visiting a movie and coming back - no separate state store to keep in sync.
- */
+
 export function useBrowseFilters() {
   const [params, setParams] = useSearchParams();
 
@@ -49,7 +43,7 @@ export function useBrowseFilters() {
 
   const update = useCallback(
     (patch) => {
-      // replace: true so typing / clicking chips doesn't fill the history stack; Back leaves the page.
+      
       setParams(
         (prev) => {
           const next = new URLSearchParams(prev);

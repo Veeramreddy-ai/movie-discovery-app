@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { ErrorState } from './States.jsx';
 
-/** Last line of defence: a render bug shows a message and a reload button instead of a blank page. */
+
 export class ErrorBoundary extends Component {
   state = { failed: false };
 

@@ -5,18 +5,7 @@ import { Semaphore } from '../lib/semaphore.js';
 const defaultSleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const MAX_RETRY_AFTER_MS = 2000;
 
-/**
- * Thin, defensive HTTP client for TMDB. Everything that can go wrong with a third-party API is
- * handled here so the rest of the backend only ever sees either parsed JSON or a typed error:
- *
- *  - timeout           : every attempt is aborted after `timeoutMs`
- *  - retries           : network errors, timeouts, 5xx and 429 are retried with exponential backoff + jitter
- *                        (429 honours the Retry-After header, capped)
- *  - concurrency limit : at most `maxConcurrent` requests are in flight; the rest queue up, which keeps us
- *                        well below TMDB's rate limit even when many users hit the API at once
- *  - circuit breaker   : after repeated failures we fail fast instead of piling up doomed requests
- *  - typed errors      : 404 -> NotFoundError; everything else -> UpstreamError(retryable?)
- */
+
 export function createTmdbClient({
   apiKey,
   baseUrl,

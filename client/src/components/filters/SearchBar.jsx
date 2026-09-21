@@ -2,14 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue.js';
 import { CloseIcon, SearchIcon } from '../ui/Icons.jsx';
 
-/**
- * Controlled by the URL (`query`) but typed into locally, so every keystroke is instant while the URL - and
- * therefore the API request - only updates after the user pauses typing (debounce) or presses Enter.
- *
- * `pushed` remembers the last value we sent to the URL. It lets us tell "the URL changed because of our own
- * debounced update" (ignore) from "the URL changed externally, e.g. Clear all / Back" (copy into the input),
- * which would otherwise overwrite text the user has typed since.
- */
+
 export function SearchBar({ query, onSearch }) {
   const [text, setText] = useState(query);
   const debounced = useDebouncedValue(text, 350);
@@ -38,7 +31,7 @@ export function SearchBar({ query, onSearch }) {
       pushed.current = value;
       onSearch(value);
     }
-    inputRef.current?.blur(); // dismisses the mobile keyboard so results are visible
+    inputRef.current?.blur(); 
   };
 
   const clear = () => {

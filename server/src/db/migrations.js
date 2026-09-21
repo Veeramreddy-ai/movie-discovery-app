@@ -1,8 +1,4 @@
-/**
- * Ordered, append-only list of schema migrations. The applied version is tracked with SQLite's built-in
- * `PRAGMA user_version`, so there is no extra bookkeeping table. To change the schema, add a NEW entry -
- * never edit an existing one.
- */
+
 export const migrations = [
   // v1: wishlist
   `

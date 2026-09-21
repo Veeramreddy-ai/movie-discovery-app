@@ -3,14 +3,7 @@ import { useMemo } from 'react';
 import { ApiError } from '../api/http.js';
 import { fetchGenres, fetchMovie, fetchMovies } from '../api/movies.js';
 
-/**
- * Infinite list of movies for the current filters.
- *
- * - Query key = the filters, so identical filters reuse the cache (going back to a previous filter is instant).
- * - React Query passes an AbortSignal to the fetch: when the filters change mid-request the old request
- *   is cancelled and its result can never overwrite the newer one (no race conditions).
- * - keepPreviousData: while new filters load, the old grid stays visible (dimmed) instead of flashing empty.
- */
+
 export function useMovies(filters) {
   // The server ignores `sort` when searching, so don't create a separate cache entry per sort while searching.
   const apiFilters = filters.query ? { ...filters, sort: undefined } : filters;
@@ -27,7 +20,7 @@ export function useMovies(filters) {
 
   const pages = query.data?.pages;
 
-  // TMDB occasionally repeats a movie across page boundaries; duplicates would break React keys.
+  
   const movies = useMemo(() => {
     const seen = new Set();
     const out = [];

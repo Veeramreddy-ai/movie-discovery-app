@@ -4,8 +4,7 @@ export function notFoundHandler(_req, _res, next) {
   next(new NotFoundError('Route not found.'));
 }
 
-// Express identifies error handlers by their 4-argument signature, so `_next` must stay.
-// eslint-disable-next-line no-unused-vars
+
 export function createErrorHandler({ logger = console } = {}) {
   return (err, _req, res, _next) => {
     if (res.headersSent) return;

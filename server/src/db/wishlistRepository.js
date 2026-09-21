@@ -2,11 +2,7 @@ import { ConflictError } from '../lib/errors.js';
 
 export const MAX_WISHLIST_ITEMS = 1000;
 
-/**
- * Wishlist storage. Each entry is keyed by (client_id, movie_id) and holds a small snapshot of the movie
- * (title, poster, year, rating) so the wishlist page renders instantly and keeps working when the
- * external API is slow or down. Everything else about the movie is fetched from TMDB on demand.
- */
+
 export function createWishlistRepository(db, { fromRow }) {
   const listStmt = db.prepare(
     `SELECT movie_id, title, poster_path, release_year, vote_average, added_at

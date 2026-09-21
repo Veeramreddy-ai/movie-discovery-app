@@ -1,13 +1,4 @@
-/**
- * TMDB's payloads are wide, inconsistent (null vs missing vs empty string) and shaped for TMDB's own
- * needs. These functions convert them into small, predictable shapes for OUR client:
- *
- *   MovieSummary  { id, title, year, rating, poster }             - used in grids and the wishlist
- *   MovieDetail   MovieSummary + overview, genres, cast, trailer ... - used on the details page
- *
- * Rules: never throw on missing data, always return the same keys, and turn "unknown" into null
- * so the UI has exactly one thing to check for.
- */
+
 export function createNormalizers({ imageBaseUrl }) {
   const image = (size, path) => (isImagePath(path) ? `${imageBaseUrl}/${size}${path}` : null);
 

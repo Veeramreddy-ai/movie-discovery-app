@@ -4,7 +4,7 @@ import { Poster } from './Poster.jsx';
 import { RatingBadge } from './RatingBadge.jsx';
 import { WishlistButton } from './WishlistButton.jsx';
 
-// Tells the browser how wide the poster will render so it downloads the smallest sufficient image.
+
 const POSTER_SIZES = '(max-width: 480px) 45vw, (max-width: 900px) 30vw, 220px';
 
 export const MovieCard = memo(function MovieCard({ movie, priority = false, extra }) {
